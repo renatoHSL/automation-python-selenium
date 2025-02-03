@@ -27,19 +27,19 @@ Criar um projeto sólido de automação para demonstrar habilidades técnicas, b
 # 🗺️ Etapas do Desenvolvimento
 
 ## ✅ Semana 1: Planejamento e Configuração do Ambiente
-- [ ] **Definir o escopo do projeto**
-- [ ] Criar o repositório no GitHub e estruturar pastas
-- [ ] Instalar bibliotecas necessárias
-- [ ] Configurar ambiente virtual (`venv`)
-- [ ] Estudar Web Scraping (Requests, BeautifulSoup, Scrapy, Selenium)
-- [ ] Estudar Automação de E-mails (SMTP, manipulação de mensagens)
-- [ ] Estudar Manipulação de Planilhas (Pandas, OpenPyXL)
+- [X] **Definir o escopo do projeto**
+- [X] Criar o repositório no GitHub e estruturar pastas
+- [X] Instalar bibliotecas necessárias
+- [X] Configurar ambiente virtual (`venv`)
+- [X] Estudar Web Scraping (Requests, BeautifulSoup, Scrapy, Selenium)
+- [X] Estudar Automação de E-mails (SMTP, manipulação de mensagens)
+- [X] Estudar Manipulação de Planilhas (Pandas, OpenPyXL)
 
 ## ✅ Semana 2: Desenvolvimento dos Módulos
 ### 🔹 Web Scraping
-- [ ] Escolher um site para extração de dados
+- [X] Escolher um site de empregos para extração de dados (Indeed)
 - [ ] Implementar script de scraping
-- [ ] Salvar os dados extraídos em CSV/Excel
+- [ ] Salvar os dados extraídos em CSV
 - [ ] Implementar medidas de segurança (headers, user-agents, delays)
 
 ### 🔹 Manipulação de Planilhas
