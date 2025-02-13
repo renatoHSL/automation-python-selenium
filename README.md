@@ -38,8 +38,8 @@ Criar um projeto sólido de automação para demonstrar habilidades técnicas, b
 ## ✅ Semana 2: Desenvolvimento dos Módulos
 ### 🔹 Web Scraping
 - [X] Escolher um site de empregos para extração de dados (Indeed)
-- [ ] Implementar script de scraping
-- [ ] Salvar os dados extraídos em CSV
+- [X] Implementar script de scraping
+- [X] Salvar os dados extraídos em CSV
 - [ ] Implementar medidas de segurança (headers, user-agents, delays)
 
 ### 🔹 Manipulação de Planilhas

@@ -22,19 +22,16 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Acessa o site do Indeed
-driver.get("https://br.indeed.com/")
-
-driver.implicitly_wait(5)
+driver.get("https://quotes.toscrape.com//")
 
 
 
 
-test = driver.find_element(by=By.XPATH, value="//*[@id='resumeTextPromo']/a")
+
 
 
 # Exibe o código fonte da página (para verificar se o bloqueio foi contornado)
 # print(driver.page_source)
-print(test.text)
 
 driver.quit()
 
