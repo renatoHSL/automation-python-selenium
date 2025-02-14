@@ -1,7 +1,5 @@
-from selenium import webdriver
+from seleniumbase import Driver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
@@ -13,14 +11,18 @@ import pandas as pd
 # mas por enquanto estou mantendo o scraping simples com Selenium para entrega do projeto.
 # Futuramente, irei explorar essa abordagem para otimizar a extração.
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--incognito")
 
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service, options=chrome_options)
+driver = Driver(uc=True, headless=False)
 
-driver.get(
-    "https://br.indeed.com/jobs?q=Desenvolvedor+Junior&l=Rio+de+Janeiro%2C+RJ&from=searchOnHP&vjk=20790cd4b63c0a9e")
+url = "https://www.indeed.com/jobs?q=Desenvolvedor+Junior&l=Rio+de+Janeiro%2C+RJ&from=searchOnHP&vjk=20790cd4b63c0a9e"
+
+# open URL using UC mode with 6 second reconnect time to bypass initial detection
+driver.uc_open_with_reconnect(url, reconnect_time=6)
+
+# attempt to click the CAPTCHA checkbox if present
+driver.uc_gui_click_captcha()
+
+driver.implicitly_wait(10)
 
 try:
     myElem = WebDriverWait(driver, 4).until(
@@ -29,20 +31,19 @@ try:
 except TimeoutException:
     print("Loading took too much time!")
 
-
-
-titles=[]
-companies=[]
-locations=[]
-links =[]
-reviews=[]
+titles = []
+companies = []
+locations = []
+links = []
+reviews = []
 salaries = []
-descriptions=[]
+descriptions = []
 
 driver.implicitly_wait(10)
 
 job_title = driver.find_element(By.XPATH, "//h2[@data-testid='jobsearch-JobInfoHeader-title']/span")
-employer = driver.find_element(By.XPATH, "//*[@id='jobsearch-ViewjobPaneWrapper']/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div/div/div[1]/div/span/a")
+employer = driver.find_element(By.XPATH,
+                               "//*[@id='jobsearch-ViewjobPaneWrapper']/div/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/div/div/div[1]/div/span/a")
 
 job_title2 = job_title.text.split("\n")[0]
 
@@ -64,19 +65,10 @@ jobs = driver.find_elements(by=By.CLASS_NAME, value="slider_container")
 # benefits = driver.find_element(By.XPATH, "//*[@id='benefits']/div[1]/div/span")
 
 
-
-
-for i in jobs:
-    print("Empres: ", i.text)
+for job in jobs:
+    print("Empres: ", job.text)
 
 driver.quit()
-
-
-
-
-
-
-
 
 # author = driver.find_elements(by=By.CLASS_NAME, value="author")
 # tags = driver.find_elements(by=By.CLASS_NAME, value="tag")
